@@ -1,0 +1,29 @@
+{
+    "name": "ahmed-aliraqi/artisan-scaffolding",
+    "type": "package",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "ahmed-aliraqi",
+            "email": "aliraqi.dev@gmail.com"
+        }
+    ],
+    "require": {
+        "sven/artisan-view": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Aliraqi\\Artisan\\Scaffolding\\": "src/"
+        },
+        "files": [
+            "src/Support/helpers.php"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Aliraqi\\Artisan\\Scaffolding\\Providers\\ServiceProvider"
+            ]
+        }
+    }
+}
