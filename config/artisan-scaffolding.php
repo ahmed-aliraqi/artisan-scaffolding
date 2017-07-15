@@ -10,31 +10,31 @@ return [
      * - database/factories/ModelFactory.php
      *
      */
-    'models_default_namespace' => 'App\Models',
+    'models_default_namespace' => 'App',
 
     /**
      * the default namespace for the relations traits.
      *
      */
-    'relations_default_namespace' => 'App\Models\Relations',
+    'relations_default_namespace' => 'App\Relations',
 
     /**
      * the default namespace for the concerns traits.
      *
      */
-    'concerns_default_namespace' => 'App\Models\Concerns',
+    'concerns_default_namespace' => 'App\Concerns',
 
     /**
      * the default namespace for the mutators traits.
      *
      */
-    'mutators_default_namespace' => 'App\Models\Mutators',
+    'mutators_default_namespace' => 'App\Mutators',
 
     /**
      * the default namespace for the scopes traits.
      *
      */
-    'scopes_default_namespace' => 'App\Models\Scopes',
+    'scopes_default_namespace' => 'App\Scopes',
 
     /**
      * the default namespace for the helpers traits.
