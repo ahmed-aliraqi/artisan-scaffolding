@@ -6,11 +6,13 @@
         {
             "name": "ahmed-aliraqi",
             "email": "aliraqi.dev@gmail.com"
+        },
+        {
+            "name": "Sven Luijten",
+            "email": "svenluijten1995@gmail.com",
+            "homepage": "https://svenluijten.com"
         }
     ],
-    "require": {
-        "sven/artisan-view": "^1.0"
-    },
     "autoload": {
         "psr-4": {
             "Aliraqi\\Artisan\\Scaffolding\\": "src/"
