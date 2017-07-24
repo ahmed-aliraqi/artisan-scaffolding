@@ -9,7 +9,7 @@ This package adds some artisan commands to generate `relations`, `helpers`, `sco
 Via [composer](http://getcomposer.org):
 
 ```bash
-$ composer require ahmed-aliraqi/artisan-scaffolding
+composer require ahmed-aliraqi/artisan-scaffolding
 ```
 
 Or add the package to your dependencies in `composer.json` and run
