@@ -29,9 +29,9 @@ class PolicyMakeCommand extends \Illuminate\Foundation\Console\PolicyMakeCommand
 
         $stub = str_replace('DummyModel', $model, $stub);
 
-        $stub = str_replace('dummyModel', Str::camel($model), $stub);
+        $stub = str_replace('dummyModel', $model == 'User' ? 'model' : Str::camel($model), $stub);
 
-        $stub = str_replace('DummyUserVariable', $model == 'User' ? 'auther' : 'user', $stub);
+        $stub = str_replace('DummyUserVariable', 'user', $stub);
 
         $use = 'use '.$this->getModelsNamespace().$model.';';
 
