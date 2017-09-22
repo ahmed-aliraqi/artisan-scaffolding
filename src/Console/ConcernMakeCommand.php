@@ -2,8 +2,8 @@
 
 namespace Aliraqi\Artisan\Scaffolding\Console;
 
-use Illuminate\Support\Facades\Config;
 use Illuminate\Console\GeneratorCommand;
+use Illuminate\Support\Facades\Config;
 
 class ConcernMakeCommand extends GeneratorCommand
 {
@@ -43,7 +43,8 @@ class ConcernMakeCommand extends GeneratorCommand
     /**
      * Get the default namespace for the class.
      *
-     * @param  string  $rootNamespace
+     * @param string $rootNamespace
+     *
      * @return string
      */
     protected function getDefaultNamespace($rootNamespace)

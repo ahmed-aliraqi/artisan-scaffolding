@@ -2,7 +2,6 @@
 
 namespace Aliraqi\Artisan\Scaffolding\Console;
 
-
 use Illuminate\Support\Facades\Config;
 
 class RequestMakeCommand extends \Illuminate\Foundation\Console\RequestMakeCommand
@@ -22,7 +21,8 @@ class RequestMakeCommand extends \Illuminate\Foundation\Console\RequestMakeComma
     /**
      * Get the default namespace for the class.
      *
-     * @param  string  $rootNamespace
+     * @param string $rootNamespace
+     *
      * @return string
      */
     protected function getDefaultNamespace($rootNamespace)

@@ -2,10 +2,10 @@
 
 namespace Aliraqi\Artisan\Scaffolding\Console;
 
+use Illuminate\Console\GeneratorCommand;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Str;
 use InvalidArgumentException;
-use Illuminate\Support\Facades\Config;
-use Illuminate\Console\GeneratorCommand;
 use Symfony\Component\Console\Input\InputOption;
 
 class ControllerMakeCommand extends GeneratorCommand
@@ -46,17 +46,14 @@ class ControllerMakeCommand extends GeneratorCommand
     protected function getStub()
     {
         if ($this->option('parent')) {
-
             return file_exists(app_path('Console/stubs/controller.nested.stub')) ?
                 app_path('Console/stubs/controller.nested.stub') :
                 __DIR__.'/stubs/controller.nested.stub';
         } elseif ($this->option('model')) {
-
             return file_exists(app_path('Console/stubs/controller.model.stub')) ?
                 app_path('Console/stubs/controller.model.stub') :
                 __DIR__.'/stubs/controller.model.stub';
         } elseif ($this->option('resource')) {
-
             return file_exists(app_path('Console/stubs/controller.stub')) ?
                 app_path('Console/stubs/controller.stub') :
                 __DIR__.'/stubs/controller.stub';
@@ -70,7 +67,8 @@ class ControllerMakeCommand extends GeneratorCommand
     /**
      * Get the default namespace for the class.
      *
-     * @param  string  $rootNamespace
+     * @param string $rootNamespace
+     *
      * @return string
      */
     protected function getDefaultNamespace($rootNamespace)
@@ -84,7 +82,8 @@ class ControllerMakeCommand extends GeneratorCommand
      *
      * Remove the base controller import if we are already in base namespace.
      *
-     * @param  string  $name
+     * @param string $name
+     *
      * @return string
      */
     protected function buildClass($name)
@@ -93,7 +92,7 @@ class ControllerMakeCommand extends GeneratorCommand
 
         $replace = [
             'FullRequestClass' => 'Illuminate\Http\Request',
-            'RequestClass' => 'Request',
+            'RequestClass'     => 'Request',
         ];
 
         if ($this->option('request')) {
@@ -124,16 +123,16 @@ class ControllerMakeCommand extends GeneratorCommand
     {
         $parentModelClass = $this->parseModel($this->option('parent'));
 
-        if (! class_exists($parentModelClass)) {
+        if (!class_exists($parentModelClass)) {
             if ($this->confirm("A {$parentModelClass} model does not exist. Do you want to generate it?", true)) {
                 $this->call('make:model', ['name' => $parentModelClass]);
             }
         }
 
         return [
-            'ParentDummyFullModelClass' => $parentModelClass,
-            'ParentDummyModelClass' => class_basename($parentModelClass),
-            'ParentDummyModelVariable' => lcfirst(class_basename($parentModelClass)),
+            'ParentDummyFullModelClass'      => $parentModelClass,
+            'ParentDummyModelClass'          => class_basename($parentModelClass),
+            'ParentDummyModelVariable'       => lcfirst(class_basename($parentModelClass)),
             'ParentDummyModelPluralVariable' => Str::plural(lcfirst(class_basename($parentModelClass))),
         ];
     }
@@ -145,10 +144,9 @@ class ControllerMakeCommand extends GeneratorCommand
      */
     protected function buildRequestReplacements()
     {
-
         $request = $this->parseRequest($this->option('request'));
 
-        if (! class_exists($request)) {
+        if (!class_exists($request)) {
             if ($this->confirm("A {$request} class does not exist. Do you want to generate it?", true)) {
                 $this->call('make:request', ['name' => class_basename($request)]);
             }
@@ -157,30 +155,31 @@ class ControllerMakeCommand extends GeneratorCommand
         return [
 
             'FullRequestClass' => $request,
-            'RequestClass' => class_basename($request),
+            'RequestClass'     => class_basename($request),
         ];
     }
 
     /**
      * Build the model replacement values.
      *
-     * @param  array  $replace
+     * @param array $replace
+     *
      * @return array
      */
     protected function buildModelReplacements(array $replace)
     {
         $modelClass = $this->parseModel($this->option('model'));
 
-        if (! class_exists($modelClass)) {
+        if (!class_exists($modelClass)) {
             if ($this->confirm("A {$modelClass} model does not exist. Do you want to generate it?", true)) {
                 $this->call('make:model', ['name' => class_basename($modelClass)]);
             }
         }
 
         return array_merge($replace, [
-            'DummyFullModelClass' => $modelClass,
-            'DummyModelClass' => class_basename($modelClass),
-            'DummyModelVariable' => lcfirst(class_basename($modelClass)),
+            'DummyFullModelClass'      => $modelClass,
+            'DummyModelClass'          => class_basename($modelClass),
+            'DummyModelVariable'       => lcfirst(class_basename($modelClass)),
             'DummyModelPluralVariable' => Str::plural(lcfirst(class_basename($modelClass))),
         ]);
     }
@@ -188,7 +187,8 @@ class ControllerMakeCommand extends GeneratorCommand
     /**
      * Get the fully-qualified model class name.
      *
-     * @param  string  $model
+     * @param string $model
+     *
      * @return string
      */
     protected function parseModel($model)
@@ -199,7 +199,7 @@ class ControllerMakeCommand extends GeneratorCommand
 
         $model = trim(str_replace('/', '\\', $model), '\\');
 
-        if (! Str::startsWith($model, $rootNamespace = $this->getModelsNamespace())) {
+        if (!Str::startsWith($model, $rootNamespace = $this->getModelsNamespace())) {
             $model = $rootNamespace.$model;
         }
 
@@ -209,7 +209,8 @@ class ControllerMakeCommand extends GeneratorCommand
     /**
      * Get the fully-qualified model class name.
      *
-     * @param  string  $request
+     * @param string $request
+     *
      * @return string
      */
     protected function parseRequest($request)
@@ -220,7 +221,7 @@ class ControllerMakeCommand extends GeneratorCommand
 
         $request = trim(str_replace('/', '\\', $request), '\\');
 
-        if (! Str::startsWith($request, $rootNamespace = $this->getRequestNamespace())) {
+        if (!Str::startsWith($request, $rootNamespace = $this->getRequestNamespace())) {
             $request = $rootNamespace.$request;
         }
 

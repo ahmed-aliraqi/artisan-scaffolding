@@ -2,10 +2,8 @@
 
 namespace Aliraqi\Artisan\Scaffolding\Console;
 
-use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Config;
 use Illuminate\Console\GeneratorCommand;
-use Symfony\Component\Console\Input\InputOption;
+use Illuminate\Support\Facades\Config;
 
 class RelationMakeCommand extends GeneratorCommand
 {
@@ -45,7 +43,8 @@ class RelationMakeCommand extends GeneratorCommand
     /**
      * Get the default namespace for the class.
      *
-     * @param  string  $rootNamespace
+     * @param string $rootNamespace
+     *
      * @return string
      */
     protected function getDefaultNamespace($rootNamespace)

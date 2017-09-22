@@ -10,6 +10,7 @@ abstract class Transformer
      * Transform a collection of items.
      *
      * @param \Illuminate\Database\Eloquent\Collection|\Illuminate\Pagination\LengthAwarePaginator $items
+     *
      * @return \Illuminate\Pagination\LengthAwarePaginator|array
      */
     public function collection($items)
@@ -30,6 +31,7 @@ abstract class Transformer
      * Transform a model instance.
      *
      * @param $item
+     *
      * @return array
      */
     abstract public function model($model);

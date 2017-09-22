@@ -2,9 +2,9 @@
 
 namespace Aliraqi\Artisan\Scaffolding\View;
 
-use Illuminate\Support\Str;
-use Illuminate\Support\Collection;
 use Aliraqi\Artisan\Scaffolding\View\Shared\ViewHelper;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Str;
 
 class View
 {
@@ -26,8 +26,8 @@ class View
     /**
      * Instantiate the FileInteractor.
      *
-     * @param string $path Base path where your views are located.
-     * @param bool $force Force the creation if file already exists.
+     * @param string $path  Base path where your views are located.
+     * @param bool   $force Force the creation if file already exists.
      */
     public function __construct($path, $force = false)
     {
@@ -39,7 +39,7 @@ class View
     /**
      * Create a new view file.
      *
-     * @param string $name The name of the view to create.
+     * @param string $name      The name of the view to create.
      * @param string $extension The extension to give the view.
      *
      * @return \Aliraqi\Artisan\Scaffolding\View\View
@@ -106,8 +106,8 @@ class View
     /**
      * Create a resource of views.
      *
-     * @param string $name Name of the resource.
-     * @param mixed $verbs Verbs to create views for.
+     * @param string $name      Name of the resource.
+     * @param mixed  $verbs     Verbs to create views for.
      * @param string $extension Extension of the views.
      *
      * @return \Aliraqi\Artisan\Scaffolding\View\View
@@ -116,7 +116,7 @@ class View
     {
         $types = ['index', 'show', 'edit', 'create'];
 
-        if (! is_null($verbs)) {
+        if (!is_null($verbs)) {
             $types = $this->helper->normalizeToArray($verbs, ',');
         }
 
@@ -130,7 +130,7 @@ class View
     /**
      * Remove a view from the filesystem.
      *
-     * @param string $name The name of the view to remove.
+     * @param string $name      The name of the view to remove.
      * @param string $extension Extension of the view to remove.
      *
      * @return void
@@ -160,8 +160,8 @@ class View
     /**
      * Get a stub by name and replace optional parameters.
      *
-     * @param string $name Name of the stub.
-     * @param array $params Parameters to replace in the stub.
+     * @param string $name   Name of the stub.
+     * @param array  $params Parameters to replace in the stub.
      *
      * @return string Contents of the stub.
      */
@@ -169,7 +169,7 @@ class View
     {
         if (file_exists(app_path('Console/stubs/view-'.$name.'.stub'))) {
             $stub = file_get_contents(app_path('Console/stubs/view-'.$name.'.stub'));
-        } else  {
+        } else {
             $stub = file_get_contents(__DIR__.'/../Console/stubs/view-'.$name.'.stub');
         }
 
@@ -183,7 +183,7 @@ class View
     /**
      * Add a section to all recently created views.
      *
-     * @param string $name The name of the section.
+     * @param string $name    The name of the section.
      * @param string $content The content of the section.
      *
      * @return \Aliraqi\Artisan\Scaffolding\View\View
@@ -193,7 +193,7 @@ class View
         $this->recent->each(function ($item) use ($name, $content) {
             $stub = $this->getStub('section', [$name]);
 
-            if (! is_null($content)) {
+            if (!is_null($content)) {
                 $stub = $this->getStub('inline-section', [$name, $content]);
             }
 
