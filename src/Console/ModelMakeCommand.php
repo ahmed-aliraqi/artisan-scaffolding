@@ -22,7 +22,8 @@ class ModelMakeCommand extends \Illuminate\Foundation\Console\ModelMakeCommand
     /**
      * Get the default namespace for the class.
      *
-     * @param  string $rootNamespace
+     * @param string $rootNamespace
+     *
      * @return string
      */
     protected function getDefaultNamespace($rootNamespace)
@@ -42,6 +43,7 @@ class ModelMakeCommand extends \Illuminate\Foundation\Console\ModelMakeCommand
         if (Str::endsWith($namespace, '\\')) {
             return substr($namespace, -1);
         }
+
         return $namespace;
     }
 }

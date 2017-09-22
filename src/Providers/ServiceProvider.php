@@ -2,9 +2,9 @@
 
 namespace Aliraqi\Artisan\Scaffolding\Providers;
 
-use Illuminate\Support\ServiceProvider as Provider;
 use Aliraqi\Artisan\Scaffolding\View\Commands\MakeViewCommand;
 use Aliraqi\Artisan\Scaffolding\View\Commands\ScrapViewCommand;
+use Illuminate\Support\ServiceProvider as Provider;
 
 class ServiceProvider extends Provider
 {
@@ -24,15 +24,15 @@ class ServiceProvider extends Provider
     {
         $this->mergeConfigFrom(__DIR__.'/../../config/artisan-scaffolding.php', 'artisan-scaffolding');
 
-        if (! file_exists(config_path('artisan-scaffolding.php'))){
+        if (!file_exists(config_path('artisan-scaffolding.php'))) {
             $this->publishes([
-                __DIR__.'/../../config/artisan-scaffolding.php' => config_path('artisan-scaffolding.php')
+                __DIR__.'/../../config/artisan-scaffolding.php' => config_path('artisan-scaffolding.php'),
             ], 'config');
         }
 
-        if (! is_dir(app_path('Console/stubs'))){
+        if (!is_dir(app_path('Console/stubs'))) {
             $this->publishes([
-                __DIR__.'/../Console/stubs' => app_path('Console/stubs')
+                __DIR__.'/../Console/stubs' => app_path('Console/stubs'),
             ], 'stubs');
         }
     }

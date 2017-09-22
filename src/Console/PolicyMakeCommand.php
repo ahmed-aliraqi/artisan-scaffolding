@@ -2,16 +2,17 @@
 
 namespace Aliraqi\Artisan\Scaffolding\Console;
 
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Str;
 
 class PolicyMakeCommand extends \Illuminate\Foundation\Console\PolicyMakeCommand
 {
     /**
      * Replace the model for the given stub.
      *
-     * @param  string $stub
-     * @param  string $model
+     * @param string $stub
+     * @param string $model
+     *
      * @return string
      */
     protected function replaceModel($stub, $model)
@@ -43,8 +44,9 @@ class PolicyMakeCommand extends \Illuminate\Foundation\Console\PolicyMakeCommand
     /**
      * Replace the namespace for the given stub.
      *
-     * @param  string $stub
-     * @param  string $name
+     * @param string $stub
+     * @param string $name
+     *
      * @return $this
      */
     protected function replaceNamespace(&$stub, $name)
@@ -78,7 +80,7 @@ class PolicyMakeCommand extends \Illuminate\Foundation\Console\PolicyMakeCommand
      */
     protected function getStub()
     {
-        if ($this->option('model')){
+        if ($this->option('model')) {
             return file_exists(app_path('Console/stubs/policy.stub')) ?
                 app_path('Console/stubs/policy.stub') :
                 __DIR__.'/stubs/policy.stub';
@@ -92,7 +94,8 @@ class PolicyMakeCommand extends \Illuminate\Foundation\Console\PolicyMakeCommand
     /**
      * Get the default namespace for the class.
      *
-     * @param  string $rootNamespace
+     * @param string $rootNamespace
+     *
      * @return string
      */
     protected function getDefaultNamespace($rootNamespace)

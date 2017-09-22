@@ -5,14 +5,14 @@ namespace Aliraqi\Artisan\Scaffolding\Providers;
 use Aliraqi\Artisan\Scaffolding\Console\ConcernMakeCommand;
 use Aliraqi\Artisan\Scaffolding\Console\ControllerMakeCommand;
 use Aliraqi\Artisan\Scaffolding\Console\HelperMakeCommand;
-use Aliraqi\Artisan\Scaffolding\Console\MutatorMakeCommand;
-use Aliraqi\Artisan\Scaffolding\Console\RelationMakeCommand;
-use Aliraqi\Artisan\Scaffolding\Console\ScopeMakeCommand;
-use Illuminate\Contracts\Foundation\Application;
 use Aliraqi\Artisan\Scaffolding\Console\ModelMakeCommand;
+use Aliraqi\Artisan\Scaffolding\Console\MutatorMakeCommand;
 use Aliraqi\Artisan\Scaffolding\Console\PolicyMakeCommand;
+use Aliraqi\Artisan\Scaffolding\Console\RelationMakeCommand;
 use Aliraqi\Artisan\Scaffolding\Console\RequestMakeCommand;
+use Aliraqi\Artisan\Scaffolding\Console\ScopeMakeCommand;
 use Aliraqi\Artisan\Scaffolding\Console\TransformerMakeCommand;
+use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Foundation\Providers\ArtisanServiceProvider as Provider;
 
 class ArtisanServiceProvider extends Provider
@@ -20,7 +20,8 @@ class ArtisanServiceProvider extends Provider
     /**
      * Create a new service provider instance.
      *
-     * @param  \Illuminate\Contracts\Foundation\Application $app
+     * @param \Illuminate\Contracts\Foundation\Application $app
+     *
      * @return void
      */
     public function __construct(Application $app)
@@ -29,11 +30,11 @@ class ArtisanServiceProvider extends Provider
 
         $this->devCommands = array_merge($this->devCommands, [
             'TransformerMake' => 'command.transformer.make',
-            'RelationMake' => 'command.relation.make',
-            'ConcernMake' => 'command.concern.make',
-            'MutatorMake' => 'command.mutator.make',
-            'HelperMake' => 'command.helper.make',
-            'ScopeMake' => 'command.scope.make',
+            'RelationMake'    => 'command.relation.make',
+            'ConcernMake'     => 'command.concern.make',
+            'MutatorMake'     => 'command.mutator.make',
+            'HelperMake'      => 'command.helper.make',
+            'ScopeMake'       => 'command.scope.make',
         ]);
     }
 
@@ -156,5 +157,4 @@ class ArtisanServiceProvider extends Provider
             return new ControllerMakeCommand($app['files']);
         });
     }
-
 }

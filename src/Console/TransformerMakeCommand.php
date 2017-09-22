@@ -2,9 +2,9 @@
 
 namespace Aliraqi\Artisan\Scaffolding\Console;
 
-use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Config;
 use Illuminate\Console\GeneratorCommand;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Str;
 use Symfony\Component\Console\Input\InputOption;
 
 class TransformerMakeCommand extends GeneratorCommand
@@ -37,7 +37,7 @@ class TransformerMakeCommand extends GeneratorCommand
      */
     protected function getStub()
     {
-        if ($this->option('model')){
+        if ($this->option('model')) {
             return file_exists(app_path('Console/stubs/transformer_model.stub')) ?
                 app_path('Console/stubs/transformer_model.stub') :
                 __DIR__.'/stubs/transformer_model.stub';
@@ -53,7 +53,8 @@ class TransformerMakeCommand extends GeneratorCommand
      *
      * Remove the base controller import if we are already in base namespace.
      *
-     * @param  string  $name
+     * @param string $name
+     *
      * @return string
      */
     protected function buildClass($name)
@@ -72,25 +73,26 @@ class TransformerMakeCommand extends GeneratorCommand
     /**
      * Build the model replacement values.
      *
-     * @param  array  $replace
+     * @param array $replace
+     *
      * @return array
      */
     protected function buildModelReplacements(array $replace)
     {
         $modelClass = $this->parseModel($this->option('model'));
 
-
         return array_merge($replace, [
             'DummyFullModelClass' => $modelClass,
-            'DummyModelClass' => class_basename($modelClass),
-            'DummyModelVariable' => lcfirst(class_basename($modelClass)),
+            'DummyModelClass'     => class_basename($modelClass),
+            'DummyModelVariable'  => lcfirst(class_basename($modelClass)),
         ]);
     }
 
     /**
      * Get the fully-qualified model class name.
      *
-     * @param  string  $model
+     * @param string $model
+     *
      * @return string
      */
     protected function parseModel($model)
@@ -101,7 +103,7 @@ class TransformerMakeCommand extends GeneratorCommand
 
         $model = trim(str_replace('/', '\\', $model), '\\');
 
-        if (! Str::startsWith($model, $rootNamespace = $this->getModelsNamespace())) {
+        if (!Str::startsWith($model, $rootNamespace = $this->getModelsNamespace())) {
             $model = $rootNamespace.$model;
         }
 
@@ -111,7 +113,8 @@ class TransformerMakeCommand extends GeneratorCommand
     /**
      * Get the default namespace for the class.
      *
-     * @param  string  $rootNamespace
+     * @param string $rootNamespace
+     *
      * @return string
      */
     protected function getDefaultNamespace($rootNamespace)
@@ -144,6 +147,7 @@ class TransformerMakeCommand extends GeneratorCommand
         if (Str::endsWith($namespace, '\\')) {
             return $namespace;
         }
+
         return $namespace.'\\';
     }
 }

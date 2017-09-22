@@ -85,7 +85,8 @@ class FormRequest extends Request
     /**
      * Format the errors from the given Validator instance.
      *
-     * @param  \Illuminate\Contracts\Validation\Validator $validator
+     * @param \Illuminate\Contracts\Validation\Validator $validator
+     *
      * @return array
      */
     protected function formatErrors(Validator $validator)
